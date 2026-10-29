@@ -42,7 +42,7 @@ async function run() {
     if (process.env.MONGODB_URI) {
       await client.connect();
       console.log(' Successfully connected to MongoDB Atlas!');
-      db = client.db(process.env.DB_NAME || 'caresphereDB');
+      db = client.db(process.env.DB_NAME || 'maitriDB');
       eventsCollection = db.collection('events');
       joinedEventsCollection = db.collection('joined_events');
     } else {
@@ -53,7 +53,7 @@ async function run() {
     app.get('/', (req, res) => {
       res.json({
         status: 'success',
-        message: 'CareSphere Social Events API Server is running smoothly!',
+        message: 'Maitri Social Events API Server is running smoothly!',
         timestamp: new Date().toISOString(),
       });
     });
