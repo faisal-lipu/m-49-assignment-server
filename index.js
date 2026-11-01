@@ -29,6 +29,18 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
+// Request logging and latency tracking middleware
+app.use((req, res, next) => {
+  const start = Date.now();
+  res.on('finish', () => {
+    const duration = Date.now() - start;
+    console.log(
+      `[${new Date().toISOString()}] ${req.method} ${req.originalUrl} -> ${res.statusCode} (${duration}ms)`
+    );
+  });
+  next();
+});
+
 // --------------------------------------------------------------
 // JWT Verification Middleware (Challenge Requirement)
 // This middleware verifies if the incoming request has a valid token.
@@ -192,6 +204,24 @@ async function run() {
           .toArray();
 
         res.json({ success: true, data: result });
+      } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+      }
+    });
+
+    // Route: Get Booked Event Dates (for Conflict-Aware Calendar)
+    app.get('/api/events/dates', async (req, res) => {
+      try {
+        const today = new Date().toISOString().split('T')[0];
+        const upcoming = await eventsCollection
+          .find(
+            { eventDate: { $gte: today } },
+            { projection: { eventDate: 1, title: 1, eventType: 1, location: 1 } }
+          )
+          .sort({ eventDate: 1 })
+          .toArray();
+
+        res.json({ success: true, count: upcoming.length, data: upcoming });
       } catch (error) {
         res.status(500).json({ success: false, message: error.message });
       }
@@ -491,6 +521,60 @@ async function run() {
 
         await joinedEventsCollection.deleteOne({ _id: new ObjectId(id) });
         res.json({ success: true, message: 'Successfully removed from joined events.' });
+      } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+      }
+    });
+
+    // ==========================================================
+    // 5. USER ENGAGEMENT & ANALYTICS ROUTE
+    // ==========================================================
+    app.get('/api/user/analytics/:email', verifyToken, async (req, res) => {
+      try {
+        const { email } = req.params;
+        if (req.user.email !== email) {
+          return res.status(403).json({
+            success: false,
+            message: 'Forbidden. You can only view your own analytics.',
+          });
+        }
+
+        const today = new Date().toISOString().split('T')[0];
+
+        // 1. Created drives count
+        const totalCreated = await eventsCollection.countDocuments({ creatorEmail: email });
+        const upcomingCreated = await eventsCollection.countDocuments({
+          creatorEmail: email,
+          eventDate: { $gte: today },
+        });
+
+        // 2. Joined drives count
+        const totalJoined = await joinedEventsCollection.countDocuments({ userEmail: email });
+        const upcomingJoined = await joinedEventsCollection.countDocuments({
+          userEmail: email,
+          eventDate: { $gte: today },
+        });
+
+        // 3. Impact metric calculation
+        const impactScore = totalCreated * 15 + totalJoined * 5;
+
+        res.json({
+          success: true,
+          data: {
+            email,
+            totalCreated,
+            upcomingCreated,
+            totalJoined,
+            upcomingJoined,
+            impactScore,
+            volunteerTier:
+              impactScore >= 50
+                ? 'Champion'
+                : impactScore >= 20
+                ? 'Active Contributor'
+                : 'Community Volunteer',
+          },
+        });
       } catch (error) {
         res.status(500).json({ success: false, message: error.message });
       }
