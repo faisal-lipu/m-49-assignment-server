@@ -1,4 +1,4 @@
-# Maitri (মৈত্রী) - Social Development Events Platform (Server API)
+# Maitri - Social Development Events Platform (Server API)
 
 [![Render](https://img.shields.io/badge/Render-Live%20API-46E3B7?style=flat-square&logo=render&logoColor=white)](https://m-49-assignment-server.onrender.com)
 [![Node.js](https://img.shields.io/badge/Node.js-v20-339933?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org/)

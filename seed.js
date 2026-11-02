@@ -16,7 +16,7 @@ const sampleEvents = [
       'Join Maitri volunteers to distribute thermal blankets, jackets, and winter essentials to underprivileged families, homeless elders, and children facing harsh temperatures across Mirpur.',
     eventType: 'Donation',
     thumbnail:
-      'https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?auto=format&fit=crop&q=80&w=1200',
     location: 'Mirpur Section 10 Community Center, Dhaka',
     eventDate: '2026-11-15',
     creatorEmail: 'organizer@maitri.org',
@@ -29,7 +29,7 @@ const sampleEvents = [
       'A community-driven lakefront cleanup. We will collect single-use plastics, clear clogged walkways, install segregated waste bins, and raise civic awareness for an eco-friendly neighborhood.',
     eventType: 'Cleanup',
     thumbnail:
-      'https://images.unsplash.com/photo-1618477461853-cf6ed80faba5?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1595278069441-2cf29f8005a4?auto=format&fit=crop&q=80&w=1200',
     location: 'Dhanmondi Lake Amphitheater, Road 8/A, Dhaka',
     eventDate: '2026-11-22',
     creatorEmail: 'organizer@maitri.org',
@@ -42,7 +42,7 @@ const sampleEvents = [
       'Help restore Dhaka urban greenery by planting over 500 indigenous fruit, medicinal, and shade trees. Free saplings, gardening gloves, and water cans will be supplied to all participants.',
     eventType: 'Plantation',
     thumbnail:
-      'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?auto=format&fit=crop&q=80&w=1200',
     location: 'Ramna Park South Gate, Shahbagh, Dhaka',
     eventDate: '2026-12-05',
     creatorEmail: 'organizer@maitri.org',
@@ -55,7 +55,7 @@ const sampleEvents = [
       'Distributing balanced, fresh cooked meals and nutrition packs to rickshaw pullers, street vendors, and low-income families around Lalbagh and surrounding riverbank areas.',
     eventType: 'Food Relief',
     thumbnail:
-      'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?auto=format&fit=crop&q=80&w=1200',
     location: 'Lalbagh Fort Grounds, Old Dhaka',
     eventDate: '2026-12-18',
     creatorEmail: 'organizer@maitri.org',
@@ -68,7 +68,7 @@ const sampleEvents = [
       'Volunteer doctors and nurses offering free general health checkups, blood sugar screenings, pediatric care consultations, and essential over-the-counter medicine distribution.',
     eventType: 'Healthcare',
     thumbnail:
-      'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&q=80&w=1200',
     location: 'Kurmitola High School Campus, Dhaka',
     eventDate: '2027-01-10',
     creatorEmail: 'organizer@maitri.org',
@@ -81,7 +81,7 @@ const sampleEvents = [
       'Collecting storybooks, primary learning materials, stationery boxes, and school bags for children in informal settlements. Volunteers will also conduct an open reading circle.',
     eventType: 'Education',
     thumbnail:
-      'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&q=80&w=1200',
+      'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=1200',
     location: 'Kawran Bazar Railgate Community Club, Dhaka',
     eventDate: '2027-01-24',
     creatorEmail: 'organizer@maitri.org',
